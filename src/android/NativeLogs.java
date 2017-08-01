@@ -34,9 +34,7 @@ public class NativeLogs extends CordovaPlugin {
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-
         super.initialize(cordova, webView);
-        this.clearLog();
     }
 
     private  String getLogsFromLogCat(int _nbLines) {
@@ -70,27 +68,29 @@ public class NativeLogs extends CordovaPlugin {
     }
 
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
-            throws JSONException {
+      throws JSONException {
 
-        if (action.equals("getLog")) {
+      if (action.equals("getLog")) {
 
-            int nbLines = args.getInt(0);
-            boolean bCopyToClipBoard = args.getBoolean(1);
+        int nbLines = args.getInt(0);
+        boolean bCopyToClipBoard = args.getBoolean(1);
 
-            String log = getLogsFromLogCat(nbLines);
+        String log = getLogsFromLogCat(nbLines);
 
-            if (bCopyToClipBoard) {
-                ClipboardManager clipboard = (ClipboardManager) cordova.getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("logcat", log);
-                clipboard.setPrimaryClip(clip);
-            }
-            callbackContext.success(log);
-            return true;
-
+        if (bCopyToClipBoard) {
+          ClipboardManager clipboard = (ClipboardManager) cordova.getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+          ClipData clip = ClipData.newPlainText("logcat", log);
+          clipboard.setPrimaryClip(clip);
         }
-        else
-            return false;
+        callbackContext.success(log);
+        return true;
+      } else if(action.equals("clearLog")) {
+
+        clearLog();
+        callbackContext.success("Cleared log");
+        return true;
+      } else {
+        return false;
+      }
     }
-
-
 }
