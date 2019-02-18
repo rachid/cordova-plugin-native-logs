@@ -14,7 +14,7 @@
         <engine name="cordova-ios" version=">=3.9.2" />
     </engines>
 
-    <js-module src="nativeLogs.js" name="NativeLogs">
+    <js-module src="www/nativeLogs.js" name="NativeLogs">
     <clobbers target="window.NativeLogs" />
   </js-module>
 
