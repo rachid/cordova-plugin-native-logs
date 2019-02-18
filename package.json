@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bottom-Line-Software/cordova-plugin-native-logs.git"
+    "url": "git+https://github.com/rachid/cordova-plugin-native-logs.git"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -21,5 +21,5 @@
   ],
   "author": "Olivier Goguel",
   "license": "MIT",
-  "homepage": "https://github.com/Bottom-Line-Software/cordova-plugin-native-logs.git#readme"
+  "homepage": "https://github.com/rachid/cordova-plugin-native-logs.git#readme"
 }
